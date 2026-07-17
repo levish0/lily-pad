@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "pnpm build:content && vite dev",
-		"build": "pnpm build:content && wrangler types && vite build",
+		"build": "pnpm build:content && wrangler types && vite build && pagefind --site .svelte-kit/cloudflare",
 		"build:content": "velite",
 		"preview": "wrangler pages dev .svelte-kit/cloudflare --port 4173",
 		"prepare": "svelte-kit sync || echo ''",

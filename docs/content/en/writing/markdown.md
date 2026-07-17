@@ -39,6 +39,16 @@ Svelte works too — see [Code Blocks](/docs/writing/code-blocks) for the full l
 <button onclick={() => count++}>{count}</button>
 ```
 
+## Images
+
+Put files in `static/` and reference them by absolute path — `static/city84.1600.webp` is served at `/city84.1600.webp`:
+
+```md
+![A calm city](/city84.1600.webp)
+```
+
+![A calm city](/city84.1600.webp)
+
 ## Tables
 
 | Feature     | Status | Notes                    |

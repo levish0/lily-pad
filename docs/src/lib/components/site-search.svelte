@@ -9,23 +9,78 @@
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import * as m from '$lib/paraglide/messages';
 
+	interface PagefindModule {
+		search: (query: string) => Promise<{
+			results: { id: string; data: () => Promise<PagefindDocument> }[];
+		}>;
+	}
+	interface PagefindDocument {
+		url: string;
+		excerpt: string;
+		meta: { title?: string };
+	}
+	interface Result {
+		title: string;
+		href: string;
+		section?: string;
+		excerpt?: string;
+	}
+
 	let open = $state(false);
 	let query = $state('');
 	let inputEl = $state<HTMLInputElement>();
 
 	const locale = $derived(localeOfUrl(page.url));
 
-	type Result = { title: string; href: string; section: string };
-	const allItems: Result[] = $derived(
+	// Full-text search over the built site. The index only exists in
+	// production output, so in dev this stays null and we fall back to
+	// filtering sidebar titles.
+	let pagefind: PagefindModule | null | undefined;
+	let fullTextResults = $state<Result[] | undefined>();
+
+	async function loadPagefind() {
+		if (pagefind !== undefined) return;
+		try {
+			// Kept opaque to the bundler — the index only exists in build output.
+			const url = '/pagefind/pagefind.js';
+			pagefind = (await import(/* @vite-ignore */ url)) as PagefindModule;
+		} catch {
+			pagefind = null;
+		}
+	}
+
+	function cleanUrl(url: string): string {
+		return url.replace(/\/index\.html$/, '/').replace(/\.html$/, '') || '/';
+	}
+
+	let searchToken = 0;
+	async function runSearch(q: string) {
+		if (!pagefind || !q.trim()) {
+			fullTextResults = undefined;
+			return;
+		}
+		const token = ++searchToken;
+		const { results } = await pagefind.search(q.trim());
+		const docs = await Promise.all(results.slice(0, 10).map((r) => r.data()));
+		if (token !== searchToken) return;
+		fullTextResults = docs.map((doc) => ({
+			title: doc.meta.title ?? doc.url,
+			href: cleanUrl(doc.url),
+			excerpt: doc.excerpt
+		}));
+	}
+
+	const navItems: Result[] = $derived(
 		getDocsNav(locale).flatMap((s) =>
 			s.items.map((i) => ({ title: i.title, href: i.href, section: s.title }))
 		)
 	);
 
-	const results = $derived(
-		query.trim()
-			? allItems.filter((i) => i.title.toLowerCase().includes(query.trim().toLowerCase()))
-			: allItems
+	const results: Result[] = $derived(
+		fullTextResults ??
+			(query.trim()
+				? navItems.filter((i) => i.title.toLowerCase().includes(query.trim().toLowerCase()))
+				: navItems)
 	);
 
 	function handleKeydown(e: KeyboardEvent) {
@@ -35,15 +90,24 @@
 		}
 	}
 
-	function select(href: string) {
+	function select(item: Result) {
 		open = false;
 		query = '';
-		goto(localizeHref(href, { locale }));
+		fullTextResults = undefined;
+		// Pagefind URLs come from the built pages, already locale-prefixed;
+		// sidebar fallback hrefs are canonical and need localizing.
+		goto(item.excerpt !== undefined ? item.href : localizeHref(item.href, { locale }));
 	}
+
+	$effect(() => {
+		runSearch(query);
+	});
 
 	$effect(() => {
 		if (open) {
 			query = '';
+			fullTextResults = undefined;
+			loadPagefind();
 			// focus the input once the dialog mounts
 			setTimeout(() => inputEl?.focus(), 0);
 		}
@@ -86,11 +150,22 @@
 				{#each results as item (item.href)}
 					<button
 						type="button"
-						onclick={() => select(item.href)}
-						class="flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2 text-left text-sm tracking-[-0.39px] transition-colors duration-100 hover:bg-(--text)/8"
+						onclick={() => select(item)}
+						class="flex w-full flex-col gap-0.5 rounded-xl px-3 py-2 text-left text-sm tracking-[-0.39px] transition-colors duration-100 hover:bg-(--text)/8"
 					>
-						<span>{item.title}</span>
-						<span class="text-xs text-(--text)/40">{item.section}</span>
+						<span class="flex w-full items-center justify-between gap-2">
+							<span>{item.title}</span>
+							{#if item.section}
+								<span class="text-xs text-(--text)/40">{item.section}</span>
+							{/if}
+						</span>
+						{#if item.excerpt}
+							<!-- eslint-disable-next-line svelte/no-at-html-tags -- pagefind excerpts are built from our own prerendered pages -->
+							<span
+								class="line-clamp-2 text-xs leading-[1.6] text-(--text)/56 [&_mark]:bg-transparent [&_mark]:font-semibold [&_mark]:text-(--text)"
+								>{@html item.excerpt}</span
+							>
+						{/if}
 					</button>
 				{/each}
 			{/if}

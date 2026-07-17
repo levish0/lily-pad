@@ -40,6 +40,16 @@ Svelte도 됩니다 — 지원 언어 전체는 [코드 블록](/docs/writing/co
 <button onclick={() => count++}>{count}</button>
 ```
 
+## 이미지
+
+파일을 `static/`에 두고 절대 경로로 참조하세요 — `static/city84.1600.webp`는 `/city84.1600.webp`에서 서빙됩니다:
+
+```md
+![차분한 도시](/city84.1600.webp)
+```
+
+![차분한 도시](/city84.1600.webp)
+
 ## 표
 
 | 기능        | 상태 | 비고                    |
