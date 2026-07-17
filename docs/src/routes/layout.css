@@ -269,27 +269,6 @@
 	}
 }
 
-/* ----------------------------------------------------------------------------
- * Shiki code highlighting (mdsx code blocks).
- * rehype-pretty-code (dual theme) emits `--shiki-light` / `--shiki-dark` CSS
- * vars on each token — we apply the matching one per color mode.
- * ------------------------------------------------------------------------- */
-.code-block :is(pre, code) {
-	background: transparent !important;
-}
-
-.code-block [data-rehype-pretty-code-figure] {
-	margin: 0;
-}
-
-.code-block :is(pre, code, span) {
-	color: var(--shiki-light);
-}
-
-:root.dark .code-block :is(pre, code, span) {
-	color: var(--shiki-dark);
-}
-
 /* Custom containers (`::: tip` → .callout): the flex-col gap provides the
  * rhythm, so strip the blueprint paragraph margins inside. */
 .callout p {
