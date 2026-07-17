@@ -17,12 +17,6 @@
 	);
 </script>
 
-<a
-	href={resolvedHref}
-	{target}
-	{rel}
-	class={cn('link font-medium', className)}
-	{...restProps}
->
+<a href={resolvedHref} {target} {rel} class={cn('link font-medium', className)} {...restProps}>
 	{@render children?.()}
 </a>

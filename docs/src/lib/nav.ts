@@ -76,8 +76,7 @@ function buildNav(locale: string): NavSection[] {
 			return a.minOrder - b.minOrder;
 		})
 		.map(([key, section]) => ({
-			title:
-				section.title ?? (key === '' ? localized(site.rootSection, locale) : titleCase(key)),
+			title: section.title ?? (key === '' ? localized(site.rootSection, locale) : titleCase(key)),
 			items: section.items
 		}));
 }
