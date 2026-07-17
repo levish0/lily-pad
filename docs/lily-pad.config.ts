@@ -32,5 +32,5 @@ export const site: SiteConfig = {
 		{ label: { en: 'Home', ko: '홈' }, href: '/' },
 		{ label: { en: 'Docs', ko: '문서' }, href: '/docs' }
 	],
-	rootSection: { en: 'Getting Started', ko: '시작하기' }
+	rootSection: { en: 'Introduction', ko: '소개' }
 };

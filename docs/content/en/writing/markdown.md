@@ -1,14 +1,23 @@
 ---
 title: Markdown
-description: Everything markdown can do in lily-pad — headings, code, tables, and more.
-order: 1
+description: The markdown surface — text, lists, links, images, and tables.
+section: Writing
+order: 20
 ---
+
+Every page is plain [GitHub-flavored markdown](https://github.github.com/gfm/). This page covers the basics; code blocks, containers, and assets each have their own page.
 
 ## Text
 
-Regular paragraphs with **bold**, _italic_, and `inline code`. Links can be [internal](/docs/getting-started) or [external](https://svelte.dev) — external links open in a new tab automatically.
+Regular paragraphs with **bold**, _italic_, and `inline code`. Links can be [internal](/docs/getting-started) or [external](https://svelte.dev) — external links open in a new tab automatically, and internal links stay in the reader's locale.
+
+Korean text is first-class: emphasis touching Hangul (`**볼드**로`) parses correctly, and the typography uses `word-break: keep-all`.
 
 > Blockquotes render with a calm left border, like this.
+
+## Headings
+
+`##` through `######` become anchored headings — every heading gets a slug so it can be linked directly, and `##`/`###` headings feed the "On this page" outline.
 
 ## Lists
 
@@ -19,37 +28,15 @@ Regular paragraphs with **bold**, _italic_, and `inline code`. Links can be [int
 1. Ordered lists
 2. Work too
 
-## Code
-
-Fenced code blocks are highlighted with shiki, using dual light/dark themes:
-
-```ts
-export function greet(name: string) {
-	return `Hello, ${name}!`;
-}
-```
-
-Svelte works too — see [Code Blocks](/docs/writing/code-blocks) for the full list of languages:
-
-```svelte
-<script>
-	let count = $state(0);
-</script>
-
-<button onclick={() => count++}>{count}</button>
-```
-
 ## Images
 
-Put files in `static/` and reference them by absolute path — `static/city84.1600.webp` is served at `/city84.1600.webp`:
-
-```md
-![A calm city](/city84.1600.webp)
-```
+Reference files from `static/` by absolute path — see [Assets](/docs/writing/assets) for details:
 
 ![A calm city](/city84.1600.webp)
 
 ## Tables
+
+Tables render through lily's Table component:
 
 | Feature     | Status | Notes                    |
 | ----------- | ------ | ------------------------ |
@@ -59,6 +46,8 @@ Put files in `static/` and reference them by absolute path — `static/city84.16
 
 ## Horizontal rule
 
+`---` becomes a lily Separator:
+
 ---
 
-That's the baseline. Svelte components inside markdown come next.
+That's the baseline — next: [Code Blocks](/docs/writing/code-blocks), [Containers](/docs/writing/containers), and [Assets](/docs/writing/assets).

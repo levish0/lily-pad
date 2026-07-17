@@ -1,7 +1,8 @@
 ---
 title: Code Blocks
 description: Highlighted by lily's CodeBlock component — dual themes and one-click copy.
-order: 3
+section: Writing
+order: 22
 ---
 
 Fenced code blocks render through lily-svelte's `CodeBlock` component. Colors follow the site theme: github-light in light mode, github-dark in dark mode.

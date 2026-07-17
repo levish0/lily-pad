@@ -2,7 +2,6 @@
 title: lily-pad란?
 description: lily-pad는 SvelteKit 위에 만든, lily-svelte를 위한 차분하고 미니멀한 문서 생성기입니다.
 navLabel: lily-pad란?
-section: 시작하기
 order: 1
 ---
 

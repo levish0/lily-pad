@@ -1,7 +1,8 @@
 ---
 title: Deploying
 description: Build the site and put it on Cloudflare Pages, or any host with an adapter swap.
-order: 5
+section: Guide
+order: 12
 ---
 
 ## Build
@@ -10,7 +11,7 @@ order: 5
 pnpm build
 ```
 
-This runs velite (content index), regenerates wrangler types, and builds the site with Vite. Every docs page is prerendered to static HTML in every locale.
+This runs velite (content index), regenerates wrangler types, builds the site with Vite, and indexes it for full-text search with pagefind. Every docs page is prerendered to static HTML in every locale.
 
 ## Preview locally
 
@@ -18,7 +19,7 @@ This runs velite (content index), regenerates wrangler types, and builds the sit
 pnpm preview
 ```
 
-Serves the production build through `wrangler pages dev`, the same runtime Cloudflare Pages uses.
+Serves the production build through `wrangler pages dev`, the same runtime Cloudflare Pages uses — including the search index, which only exists in production builds.
 
 ## Cloudflare Pages
 
@@ -29,6 +30,10 @@ pnpm exec wrangler pages deploy .svelte-kit/cloudflare
 ```
 
 Or connect the GitHub repository in the Cloudflare dashboard and set the build command to `pnpm build` — every push deploys automatically.
+
+::: warning
+When `wrangler.jsonc` is committed, it overrides the compatibility flags set in the Cloudflare dashboard. Keep `nodejs_compat` in the file's `compatibility_flags`.
+:::
 
 ## Other hosts
 

@@ -1,15 +1,24 @@
 ---
 title: 마크다운
-description: lily-pad에서 마크다운으로 할 수 있는 모든 것 — 제목, 코드, 표 등.
+description: 마크다운의 기본 — 텍스트, 목록, 링크, 이미지, 표.
+navLabel: 마크다운
 section: 글쓰기
-order: 1
+order: 20
 ---
+
+모든 페이지는 순수한 [GitHub 스타일 마크다운](https://github.github.com/gfm/)입니다. 이 페이지는 기본을 다루고, 코드 블록·컨테이너·에셋은 각자의 페이지가 있습니다.
 
 ## 텍스트
 
-**굵게**, _기울임_, `인라인 코드`가 있는 일반 문단. 링크는 [내부](/docs/getting-started)일 수도, [외부](https://svelte.dev)일 수도 있습니다 — 외부 링크는 자동으로 새 탭에서 열립니다.
+**굵게**, _기울임_, `인라인 코드`가 있는 일반 문단. 링크는 [내부](/docs/getting-started)일 수도, [외부](https://svelte.dev)일 수도 있습니다 — 외부 링크는 자동으로 새 탭에서 열리고, 내부 링크는 독자의 로케일을 유지합니다.
+
+한국어는 일급 시민입니다: 한글에 붙은 강조(`**볼드**로`)가 올바르게 파싱되고, 타이포그래피는 `word-break: keep-all`을 사용합니다.
 
 > 인용문은 이렇게 차분한 왼쪽 테두리로 렌더링됩니다.
+
+## 제목
+
+`##`부터 `######`까지 앵커가 달린 제목이 됩니다 — 모든 제목에 slug가 붙어 직접 링크할 수 있고, `##`/`###` 제목은 오른쪽 "On this page" 목차에 나타납니다.
 
 ## 목록
 
@@ -20,46 +29,26 @@ order: 1
 1. 순서 있는 목록도
 2. 잘 됩니다
 
-## 코드
-
-펜스 코드 블록은 shiki로 하이라이팅되며, 라이트/다크 듀얼 테마를 사용합니다:
-
-```ts
-export function greet(name: string) {
-	return `안녕하세요, ${name}님!`;
-}
-```
-
-Svelte도 됩니다 — 지원 언어 전체는 [코드 블록](/docs/writing/code-blocks)을 보세요:
-
-```svelte
-<script>
-	let count = $state(0);
-</script>
-
-<button onclick={() => count++}>{count}</button>
-```
-
 ## 이미지
 
-파일을 `static/`에 두고 절대 경로로 참조하세요 — `static/city84.1600.webp`는 `/city84.1600.webp`에서 서빙됩니다:
-
-```md
-![차분한 도시](/city84.1600.webp)
-```
+`static/`의 파일을 절대 경로로 참조하세요 — 자세한 건 [에셋](/docs/writing/assets)에:
 
 ![차분한 도시](/city84.1600.webp)
 
 ## 표
 
-| 기능        | 상태 | 비고                    |
-| ----------- | ---- | ----------------------- |
-| 제목        | ✅   | slug 기반 앵커 링크     |
-| 코드 블록   | ✅   | shiki 듀얼 테마         |
-| 표          | ✅   | GitHub 스타일 마크다운  |
+표는 lily의 Table 컴포넌트로 렌더링됩니다:
+
+| 기능      | 상태 | 비고                   |
+| --------- | ---- | ---------------------- |
+| 제목      | ✅   | slug 기반 앵커 링크    |
+| 코드 블록 | ✅   | shiki 듀얼 테마        |
+| 표        | ✅   | GitHub 스타일 마크다운 |
 
 ## 구분선
 
+`---`는 lily Separator가 됩니다:
+
 ---
 
-여기까지가 기본입니다. 마크다운 속 Svelte 컴포넌트가 다음 차례입니다.
+여기까지가 기본 — 다음은 [코드 블록](/docs/writing/code-blocks), [컨테이너](/docs/writing/containers), [에셋](/docs/writing/assets)입니다.

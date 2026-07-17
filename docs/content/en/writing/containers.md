@@ -1,7 +1,8 @@
 ---
 title: Containers
 description: Callout blocks — tip, info, note, warning, and danger.
-order: 4
+section: Writing
+order: 23
 ---
 
 Wrap content in `:::` fences to render a callout. Five types are available: `tip`, `info`, `note`, `warning`, and `danger`.
@@ -30,15 +31,15 @@ This action is destructive.
 
 ## Custom titles
 
-Put a title in square brackets after the type:
+Put a title after the type:
 
 ```md
-::: tip[Pro tip]
+::: tip Pro tip
 You can name the callout anything.
 :::
 ```
 
-::: tip[Pro tip]
+::: tip Pro tip
 You can name the callout anything.
 :::
 
@@ -46,7 +47,7 @@ You can name the callout anything.
 
 Containers hold any markdown — emphasis, `inline code`, links, and lists all work:
 
-::: note[Everything nests]
+::: note Everything nests
 A list inside a callout:
 
 - calm

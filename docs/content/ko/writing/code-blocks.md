@@ -3,7 +3,7 @@ title: 코드 블록
 description: lily의 CodeBlock 컴포넌트로 하이라이팅 — 듀얼 테마와 원클릭 복사.
 navLabel: 코드 블록
 section: 글쓰기
-order: 3
+order: 22
 ---
 
 펜스 코드 블록은 lily-svelte의 `CodeBlock` 컴포넌트로 렌더링됩니다. 색상은 사이트 테마를 따라갑니다: 라이트 모드에선 github-light, 다크 모드에선 github-dark.
