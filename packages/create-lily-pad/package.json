@@ -1,5 +1,5 @@
 {
-	"name": "create-lily-pad",
+	"name": "@levish0/create-lily-pad",
 	"version": "0.0.1",
 	"description": "Scaffold a lily-pad documentation site.",
 	"license": "MIT",

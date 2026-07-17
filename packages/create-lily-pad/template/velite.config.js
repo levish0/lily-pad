@@ -1,3 +1,3 @@
-import { docsConfig } from 'lily-pad/velite';
+import { docsConfig } from '@levish0/lily-pad/velite';
 
 export default docsConfig();

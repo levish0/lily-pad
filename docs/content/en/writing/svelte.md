@@ -18,7 +18,7 @@ description: …
 ---
 
 <script>
-	import { Button } from 'lily-pad';
+	import { Button } from '@levish0/lily-pad';
 	let count = $state(0);
 </script>
 
@@ -30,7 +30,7 @@ description: …
 That renders a real, interactive button:
 
 <script>
-	import { Button } from 'lily-pad';
+	import { Button } from '@levish0/lily-pad';
 	let count = $state(0);
 </script>
 

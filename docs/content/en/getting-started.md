@@ -12,7 +12,7 @@ order: 2
 ## Scaffold a site
 
 ```bash
-pnpm create lily-pad my-docs
+pnpm create @levish0/lily-pad my-docs
 cd my-docs
 pnpm install
 ```

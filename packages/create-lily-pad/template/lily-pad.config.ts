@@ -1,4 +1,4 @@
-import { defineSiteConfig } from 'lily-pad';
+import { defineSiteConfig } from '@levish0/lily-pad';
 
 export const site = defineSiteConfig({
 	title: 'My Docs',

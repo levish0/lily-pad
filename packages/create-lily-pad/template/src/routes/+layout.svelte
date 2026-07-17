@@ -2,7 +2,7 @@
 	import type { Pathname } from '$app/types';
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { AppShell } from 'lily-pad';
+	import { AppShell } from '@levish0/lily-pad';
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import { docs, runtime, site } from '$lib/lily-pad.js';
 	import './layout.css';

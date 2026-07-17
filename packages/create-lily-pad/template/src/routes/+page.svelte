@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Button } from 'lily-pad';
+	import { Button } from '@levish0/lily-pad';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { localeOfUrl, site } from '$lib/lily-pad.js';
 

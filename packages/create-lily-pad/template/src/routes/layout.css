@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'lily-pad/styles.css';
+@import '@levish0/lily-pad/styles.css';
 @plugin '@tailwindcss/typography';
 
 /* The lily-pad theme ships prebuilt Svelte components — point Tailwind's
  * content scanner at them so their utility classes are generated. */
-@source '../../node_modules/lily-pad/dist';
+@source '../../node_modules/@levish0/lily-pad/dist';
 
 /* lily design system — written into your stylesheet by the lily CLI; yours to edit. */
 

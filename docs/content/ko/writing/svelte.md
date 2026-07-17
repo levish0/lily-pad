@@ -19,7 +19,7 @@ description: …
 ---
 
 <script>
-	import { Button } from 'lily-pad';
+	import { Button } from '@levish0/lily-pad';
 	let count = $state(0);
 </script>
 
@@ -31,7 +31,7 @@ description: …
 진짜로 동작하는 버튼이 렌더링됩니다:
 
 <script>
-	import { Button } from 'lily-pad';
+	import { Button } from '@levish0/lily-pad';
 	let count = $state(0);
 </script>
 

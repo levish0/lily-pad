@@ -1,4 +1,4 @@
-import { createDocLoader, type DocEntry, type LocaleRuntime } from 'lily-pad';
+import { createDocLoader, type DocEntry, type LocaleRuntime } from '@levish0/lily-pad';
 import { docs as veliteDocs } from '$content/index.js';
 import {
 	baseLocale,

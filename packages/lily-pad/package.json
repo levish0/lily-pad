@@ -1,5 +1,5 @@
 {
-	"name": "lily-pad",
+	"name": "@levish0/lily-pad",
 	"version": "0.0.1",
 	"description": "A calm, minimal documentation generator for lily-svelte — theme and markdown pipeline.",
 	"license": "MIT",

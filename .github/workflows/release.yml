@@ -54,5 +54,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # No NPM token: auth is via OIDC Trusted Publishing.
-          # Configure it on npmjs.com → lily-pad / create-lily-pad → Settings → Trusted Publishing.
+          # Configure it on npmjs.com → @levish0/lily-pad and @levish0/create-lily-pad → Settings → Trusted Publishing.
           NPM_CONFIG_PROVENANCE: true

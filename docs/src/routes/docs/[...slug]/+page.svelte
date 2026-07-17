@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { DocPage } from 'lily-pad';
+	import { DocPage } from '@levish0/lily-pad';
 
 	let { data } = $props();
 </script>

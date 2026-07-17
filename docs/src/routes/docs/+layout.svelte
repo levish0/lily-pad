@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { DocsLayout } from 'lily-pad';
+	import { DocsLayout } from '@levish0/lily-pad';
 
 	let { children } = $props();
 </script>

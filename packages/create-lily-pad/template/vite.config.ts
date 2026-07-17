@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
 import adapter from '@sveltejs/adapter-cloudflare';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { lilyPadPreprocess } from 'lily-pad/vite';
+import { lilyPadPreprocess } from '@levish0/lily-pad/vite';
 
 export default defineConfig({
 	plugins: [

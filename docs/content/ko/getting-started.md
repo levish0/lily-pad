@@ -13,7 +13,7 @@ order: 2
 ## 사이트 스캐폴딩
 
 ```bash
-pnpm create lily-pad my-docs
+pnpm create @levish0/lily-pad my-docs
 cd my-docs
 pnpm install
 ```

@@ -7,7 +7,7 @@ Markdown in, calm docs site out — built on SvelteKit, styled with lily compone
 ## Quick start
 
 ```bash
-pnpm create lily-pad my-docs
+pnpm create @levish0/lily-pad my-docs
 cd my-docs
 pnpm install
 pnpm dev
@@ -15,10 +15,10 @@ pnpm dev
 
 ## Packages
 
-| Package                                        | Description                              |
-| ---------------------------------------------- | ---------------------------------------- |
-| [`lily-pad`](./packages/lily-pad)              | The theme and markdown pipeline          |
-| [`create-lily-pad`](./packages/create-lily-pad)| Scaffolds a new documentation site       |
+| Package                                                     | Description                        |
+| ----------------------------------------------------------- | ---------------------------------- |
+| [`@levish0/lily-pad`](./packages/lily-pad)                  | The theme and markdown pipeline    |
+| [`@levish0/create-lily-pad`](./packages/create-lily-pad)    | Scaffolds a new documentation site |
 
 ## Development
 
