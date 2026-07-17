@@ -25,7 +25,7 @@
 </svelte:head>
 
 <div class="flex justify-between gap-12">
-	<article class="max-w-3xl min-w-0 flex-1">
+	<article class="max-w-3xl min-w-0 flex-1" data-pagefind-body>
 		<div class="flex flex-col gap-2">
 			<h1 class="text-3xl font-semibold tracking-[-0.96px]">{doc.title}</h1>
 			{#if doc.description}
@@ -51,7 +51,7 @@
 		</div>
 
 		{#if neighbors.previous || neighbors.next}
-			<nav class="mt-14 flex flex-col gap-6">
+			<nav class="mt-14 flex flex-col gap-6" data-pagefind-ignore>
 				<div class="h-px w-full bg-(--text)/8"></div>
 				<div class="flex w-full gap-5">
 					<div class="flex min-w-0 flex-1 flex-col gap-1">
