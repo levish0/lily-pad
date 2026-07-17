@@ -7,6 +7,41 @@ import adapter from '@sveltejs/adapter-cloudflare';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { mdsxConfig } from './mdsx.config.js';
 
+/**
+ * Container fences. remark-directive only parses `:::tip[Title]`, so rewrite
+ * the roomier `::: tip Title` form into it before mdsx runs. Lines inside
+ * code fences are left untouched.
+ */
+function containerSyntax() {
+	const FENCE = /^[ \t]*(`{3,}|~{3,})/;
+	const CONTAINER = /^([ \t]*):::[ \t]+([A-Za-z][\w-]*)[ \t]*(.*?)[ \t]*$/;
+
+	return {
+		name: 'container-syntax',
+		markup: ({ content, filename }: { content: string; filename?: string }) => {
+			if (!filename?.endsWith('.md') || !content.includes(':::')) return;
+
+			let inFence = false;
+			const code = content
+				.split('\n')
+				.map((line) => {
+					if (FENCE.test(line)) {
+						inFence = !inFence;
+						return line;
+					}
+					if (inFence) return line;
+					return line.replace(CONTAINER, (_, indent, name, title) =>
+						title ? `${indent}:::${name}[${title}]` : `${indent}:::${name}`
+					);
+				})
+				.join('\n');
+
+			if (code === content) return;
+			return { code };
+		}
+	};
+}
+
 export default defineConfig({
 	plugins: [
 		tailwindcss(),
@@ -21,7 +56,7 @@ export default defineConfig({
 				}
 			},
 			adapter: adapter(),
-			preprocess: [mdsx(mdsxConfig)],
+			preprocess: [containerSyntax(), mdsx(mdsxConfig)],
 			extensions: ['.svelte', '.md'],
 			alias: {
 				'$content/*': '.velite/*'

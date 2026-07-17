@@ -289,3 +289,9 @@
 :root.dark .code-block :is(pre, code, span) {
 	color: var(--shiki-dark);
 }
+
+/* Custom containers (`::: tip` → .callout): the flex-col gap provides the
+ * rhythm, so strip the blueprint paragraph margins inside. */
+.callout p {
+	margin-top: 0 !important;
+}
