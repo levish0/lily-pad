@@ -4,11 +4,27 @@ A calm, minimal documentation generator for [lily-svelte](https://github.com/lev
 
 Markdown in, calm docs site out — built on SvelteKit, styled with lily components. Multilingual, full-text searchable, prerendered to static HTML.
 
+## Quick start
+
+```bash
+pnpm create lily-pad my-docs
+cd my-docs
+pnpm install
+pnpm dev
+```
+
+## Packages
+
+| Package                                        | Description                              |
+| ---------------------------------------------- | ---------------------------------------- |
+| [`lily-pad`](./packages/lily-pad)              | The theme and markdown pipeline          |
+| [`create-lily-pad`](./packages/create-lily-pad)| Scaffolds a new documentation site       |
+
 ## Development
 
 ```bash
-cd docs
 pnpm install
+pnpm build:packages
 pnpm dev
 ```
 

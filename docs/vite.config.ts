@@ -1,46 +1,10 @@
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
-import { mdsx } from 'mdsx';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import adapter from '@sveltejs/adapter-cloudflare';
 import { sveltekit } from '@sveltejs/kit/vite';
-import { mdsxConfig } from './mdsx.config.js';
-
-/**
- * Container fences. remark-directive only parses `:::tip[Title]`, so rewrite
- * the roomier `::: tip Title` form into it before mdsx runs. Lines inside
- * code fences are left untouched.
- */
-function containerSyntax() {
-	const FENCE = /^[ \t]*(`{3,}|~{3,})/;
-	const CONTAINER = /^([ \t]*):::[ \t]+([A-Za-z][\w-]*)[ \t]*(.*?)[ \t]*$/;
-
-	return {
-		name: 'container-syntax',
-		markup: ({ content, filename }: { content: string; filename?: string }) => {
-			if (!filename?.endsWith('.md') || !content.includes(':::')) return;
-
-			let inFence = false;
-			const code = content
-				.split('\n')
-				.map((line) => {
-					if (FENCE.test(line)) {
-						inFence = !inFence;
-						return line;
-					}
-					if (inFence) return line;
-					return line.replace(CONTAINER, (_, indent, name, title) =>
-						title ? `${indent}:::${name}[${title}]` : `${indent}:::${name}`
-					);
-				})
-				.join('\n');
-
-			if (code === content) return;
-			return { code };
-		}
-	};
-}
+import { lilyPadPreprocess } from 'lily-pad/vite';
 
 export default defineConfig({
 	plugins: [
@@ -62,7 +26,7 @@ export default defineConfig({
 					exclude: ['<all>', '/pagefind/*']
 				}
 			}),
-			preprocess: [containerSyntax(), mdsx(mdsxConfig)],
+			preprocess: lilyPadPreprocess(),
 			extensions: ['.svelte', '.md'],
 			alias: {
 				'$content/*': '.velite/*',

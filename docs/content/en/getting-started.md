@@ -1,41 +1,37 @@
 ---
 title: Getting Started
-description: Set up a lily-pad site, learn the project layout, and write your first page.
+description: Scaffold a lily-pad site, learn the project layout, and write your first page.
 order: 2
 ---
-
-::: info
-lily-pad is young — today it ships as this repository, not yet as an npm package. You start from the repo and make it yours.
-:::
 
 ## Prerequisites
 
 - [Node.js](https://nodejs.org) 20 or newer
 - [pnpm](https://pnpm.io)
 
-## Get the code
+## Scaffold a site
 
 ```bash
-git clone https://github.com/levish0/lily-pad.git
-cd lily-pad/docs
+pnpm create lily-pad my-docs
+cd my-docs
 pnpm install
 ```
 
+This creates a thin SvelteKit shell wired to the `lily-pad` package — the theme and markdown pipeline come from npm and update with `pnpm update`.
+
 ## Project layout
 
-Everything you touch day-to-day lives in `docs/`:
-
 ```
-docs/
+my-docs/
 ├── lily-pad.config.ts   # site title, nav, GitHub link, sidebar labels
 ├── content/             # your markdown, one folder per locale
 │   ├── en/
 │   └── ko/
-├── src/                 # the theme (SvelteKit app)
+├── src/                 # thin shell (routes delegate to the lily-pad theme)
 └── static/              # images and other public files
 ```
 
-You write in `content/` and configure in `lily-pad.config.ts` — the theme in `src/` only needs touching when you want to change how the site looks.
+You write in `content/` and configure in `lily-pad.config.ts`. The files in `src/` are a few small stubs — the actual theme lives in the `lily-pad` package.
 
 ## Write your first page
 

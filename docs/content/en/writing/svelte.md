@@ -18,7 +18,7 @@ description: …
 ---
 
 <script>
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button } from 'lily-pad';
 	let count = $state(0);
 </script>
 
@@ -30,7 +30,7 @@ description: …
 That renders a real, interactive button:
 
 <script>
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button } from 'lily-pad';
 	let count = $state(0);
 </script>
 
@@ -38,7 +38,7 @@ That renders a real, interactive button:
 
 ## What you can use
 
-- **lily components** installed in the project (`$lib/components/ui/...`)
+- **lily components** re-exported by the `lily-pad` package (`Button`, `Badge`, `Kbd`, `CodeBlock`…)
 - **your own components** from `$lib/`
 - **runes** — `$state`, `$derived`, and friends work as in any Svelte file
 

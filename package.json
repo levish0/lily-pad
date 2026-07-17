@@ -1,0 +1,31 @@
+{
+	"name": "@lily-pad/monorepo",
+	"version": "0.0.0",
+	"description": "A calm, minimal documentation generator for lily-svelte",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "pnpm -F docs dev",
+		"build": "pnpm build:packages && pnpm -F docs build",
+		"build:packages": "pnpm -r -F \"./packages/**\" build",
+		"preview": "pnpm -F docs preview",
+		"check": "pnpm -r check",
+		"lint": "pnpm -r lint",
+		"fmt": "pnpm -r format",
+		"changeset": "changeset",
+		"ci:build": "pnpm build:packages",
+		"ci:publish": "changeset publish",
+		"ci:release": "pnpm ci:build && pnpm ci:publish",
+		"preinstall": "npx only-allow pnpm"
+	},
+	"engines": {
+		"pnpm": ">=9",
+		"node": ">=20"
+	},
+	"packageManager": "pnpm@11.5.0",
+	"license": "MIT",
+	"devDependencies": {
+		"@changesets/changelog-github": "^0.7.0",
+		"@changesets/cli": "^2.31.1"
+	}
+}

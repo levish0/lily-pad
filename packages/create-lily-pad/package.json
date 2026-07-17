@@ -1,0 +1,45 @@
+{
+	"name": "create-lily-pad",
+	"version": "0.0.1",
+	"description": "Scaffold a lily-pad documentation site.",
+	"license": "MIT",
+	"author": {
+		"name": "levish",
+		"url": "https://levish-ac.pages.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/levish0/lily-pad.git",
+		"directory": "packages/create-lily-pad"
+	},
+	"keywords": [
+		"create",
+		"documentation",
+		"lily-pad",
+		"svelte",
+		"sveltekit"
+	],
+	"type": "module",
+	"bin": {
+		"create-lily-pad": "./bin.js"
+	},
+	"files": [
+		"bin.js",
+		"template"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "node -e \"\"",
+		"check": "node --check bin.js",
+		"lint": "prettier --check bin.js",
+		"format": "prettier --write bin.js"
+	},
+	"engines": {
+		"node": ">=20"
+	},
+	"devDependencies": {
+		"prettier": "^3.8.3"
+	}
+}

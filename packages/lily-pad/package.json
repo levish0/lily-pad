@@ -1,0 +1,88 @@
+{
+	"name": "lily-pad",
+	"version": "0.0.1",
+	"description": "A calm, minimal documentation generator for lily-svelte — theme and markdown pipeline.",
+	"license": "MIT",
+	"author": {
+		"name": "levish",
+		"url": "https://levish-ac.pages.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/levish0/lily-pad.git",
+		"directory": "packages/lily-pad"
+	},
+	"keywords": [
+		"documentation",
+		"docs",
+		"static-site-generator",
+		"svelte",
+		"sveltekit",
+		"lily"
+	],
+	"type": "module",
+	"svelte": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js",
+			"default": "./dist/index.js"
+		},
+		"./vite": {
+			"types": "./dist/vite.d.ts",
+			"default": "./dist/vite.js"
+		},
+		"./velite": {
+			"types": "./dist/velite.d.ts",
+			"default": "./dist/velite.js"
+		},
+		"./styles.css": "./dist/styles.css"
+	},
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build": "svelte-package -o dist",
+		"dev": "svelte-package -o dist --watch",
+		"check": "svelte-check --tsconfig ./tsconfig.json",
+		"lint": "prettier --check src",
+		"format": "prettier --write src",
+		"prepublishOnly": "pnpm build"
+	},
+	"peerDependencies": {
+		"@sveltejs/kit": "^2.0.0",
+		"svelte": "^5.0.0"
+	},
+	"dependencies": {
+		"@iconify-json/heroicons": "^1.2.3",
+		"@iconify/svelte": "^5.2.2",
+		"@shikijs/langs": "^3.20.0",
+		"@shikijs/themes": "^3.20.0",
+		"bits-ui": "^2.16.3",
+		"clsx": "^2.1.1",
+		"mdsx": "^0.0.7",
+		"mode-watcher": "^1.1.0",
+		"rehype-slug": "^6.0.0",
+		"remark-cjk-friendly": "^2.3.1",
+		"remark-directive": "^4.0.0",
+		"remark-gfm": "^4.0.1",
+		"shiki": "^3.20.0",
+		"tailwind-merge": "^3.6.0",
+		"unist-util-visit": "^5.1.0",
+		"velite": "^0.4.0"
+	},
+	"devDependencies": {
+		"@sveltejs/kit": "^2.63.0",
+		"@sveltejs/package": "^2.5.4",
+		"@sveltejs/vite-plugin-svelte": "^7.1.2",
+		"prettier": "^3.8.3",
+		"prettier-plugin-svelte": "^4.1.0",
+		"svelte": "^5.56.1",
+		"svelte-check": "^4.6.0",
+		"typescript": "^6.0.3"
+	}
+}

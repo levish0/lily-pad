@@ -19,7 +19,7 @@ description: …
 ---
 
 <script>
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button } from 'lily-pad';
 	let count = $state(0);
 </script>
 
@@ -31,7 +31,7 @@ description: …
 진짜로 동작하는 버튼이 렌더링됩니다:
 
 <script>
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button } from 'lily-pad';
 	let count = $state(0);
 </script>
 
@@ -39,7 +39,7 @@ description: …
 
 ## 쓸 수 있는 것
 
-- 프로젝트에 설치된 **lily 컴포넌트** (`$lib/components/ui/...`)
+- `lily-pad` 패키지가 재수출하는 **lily 컴포넌트** (`Button`, `Badge`, `Kbd`, `CodeBlock`…)
 - `$lib/`의 **직접 만든 컴포넌트**
 - **룬** — `$state`, `$derived` 등이 여느 Svelte 파일처럼 동작합니다
 

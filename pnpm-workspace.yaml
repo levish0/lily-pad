@@ -1,0 +1,9 @@
+packages:
+  - packages/*
+  - docs
+
+allowBuilds:
+  '@tailwindcss/oxide': true
+  workerd: true
+  sharp: true
+  esbuild: true

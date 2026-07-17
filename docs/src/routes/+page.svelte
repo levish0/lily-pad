@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { Button } from '$lib/components/ui/button/index.js';
+	import { Button } from 'lily-pad';
 	import { localizeHref } from '$lib/paraglide/runtime';
-	import { localeOfUrl } from '$lib/locale.js';
-	import { site } from '$lib/site.js';
+	import { localeOfUrl, site } from '$lib/lily-pad.js';
 
 	const locale = $derived(localeOfUrl(page.url));
 </script>
@@ -23,8 +22,6 @@
 	</p>
 	<div class="flex items-center gap-3 pt-2">
 		<Button href={localizeHref('/docs', { locale })}>Get started</Button>
-		<Button variant="ghost" href="https://github.com/levish0/lily-pad" target="_blank">
-			GitHub ↗
-		</Button>
+		<Button variant="ghost" href={site.github} target="_blank">GitHub ↗</Button>
 	</div>
 </main>

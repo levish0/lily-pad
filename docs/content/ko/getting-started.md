@@ -1,42 +1,38 @@
 ---
 title: 시작하기
-description: lily-pad 사이트를 설정하고, 프로젝트 구조를 익히고, 첫 페이지를 작성합니다.
+description: lily-pad 사이트를 스캐폴딩하고, 프로젝트 구조를 익히고, 첫 페이지를 작성합니다.
 navLabel: 시작하기
 order: 2
 ---
-
-::: info
-lily-pad는 아직 어립니다 — 지금은 npm 패키지가 아니라 이 저장소 자체로 배포됩니다. 레포에서 시작해 여러분의 것으로 만드세요.
-:::
 
 ## 준비물
 
 - [Node.js](https://nodejs.org) 20 이상
 - [pnpm](https://pnpm.io)
 
-## 코드 받기
+## 사이트 스캐폴딩
 
 ```bash
-git clone https://github.com/levish0/lily-pad.git
-cd lily-pad/docs
+pnpm create lily-pad my-docs
+cd my-docs
 pnpm install
 ```
 
+`lily-pad` 패키지에 연결된 얇은 SvelteKit 셸이 만들어집니다 — 테마와 마크다운 파이프라인은 npm에서 오고, `pnpm update`로 업데이트됩니다.
+
 ## 프로젝트 구조
 
-일상적으로 만지는 것은 전부 `docs/` 안에 있습니다:
-
 ```
-docs/
+my-docs/
 ├── lily-pad.config.ts   # 사이트 제목, 네비, GitHub 링크, 사이드바 라벨
 ├── content/             # 마크다운, 로케일별 폴더
 │   ├── en/
 │   └── ko/
-├── src/                 # 테마 (SvelteKit 앱)
+├── src/                 # 얇은 셸 (라우트가 lily-pad 테마에 위임)
 └── static/              # 이미지 등 공개 파일
 ```
 
-글은 `content/`에 쓰고 설정은 `lily-pad.config.ts`에서 합니다 — `src/`의 테마는 사이트의 생김새를 바꾸고 싶을 때만 건드리면 됩니다.
+글은 `content/`에 쓰고 설정은 `lily-pad.config.ts`에서 합니다. `src/`의 파일들은 작은 스텁 몇 개뿐이고, 실제 테마는 `lily-pad` 패키지에 있습니다.
 
 ## 첫 페이지 작성
 

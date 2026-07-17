@@ -1,0 +1,7 @@
+/* lily-pad theme CSS that can't be expressed as utility classes on elements. */
+
+/* Custom containers (`::: tip` → .callout): the flex-col gap provides the
+ * rhythm, so strip the blueprint paragraph margins inside. */
+.callout p {
+	margin-top: 0 !important;
+}

@@ -1,0 +1,46 @@
+<script lang="ts">
+	import type { Snippet } from 'svelte';
+	import { page } from '$app/state';
+	import { getLilyPad } from '../context.js';
+
+	let { children }: { children?: Snippet } = $props();
+
+	const lp = getLilyPad();
+	const locale = $derived(lp.localeOf(page.url));
+	const sections = $derived(lp.nav.sections(locale));
+
+	function isActive(href: string) {
+		return lp.runtime.deLocalizeHref(page.url.pathname).replace(/\/$/, '') === href;
+	}
+</script>
+
+<div class="mx-auto flex w-full max-w-[88rem] flex-1 gap-8 px-6 lg:px-8">
+	<aside
+		class="no-scrollbar sticky top-14 hidden h-[calc(100svh-3.5rem)] w-60 shrink-0 overflow-y-auto py-10 [mask-image:linear-gradient(to_bottom,transparent,#000_2.5rem,#000_calc(100%-3.5rem),transparent)] md:block"
+	>
+		<nav class="flex flex-col gap-6">
+			{#each sections as section (section.title)}
+				<div class="flex flex-col gap-1">
+					<p class="px-3 pb-1 text-xs font-medium tracking-[-0.3px] text-(--text)/40">
+						{section.title}
+					</p>
+					{#each section.items as item (item.href)}
+						<a
+							href={lp.runtime.localizeHref(item.href, { locale })}
+							class="rounded-xl px-3 py-1.5 text-sm tracking-[-0.39px] transition-colors duration-150
+								{isActive(item.href)
+								? 'bg-(--text)/8 font-medium text-(--text)'
+								: 'text-(--text)/56 hover:bg-(--text)/5 hover:text-(--text)'}"
+						>
+							{item.title}
+						</a>
+					{/each}
+				</div>
+			{/each}
+		</nav>
+	</aside>
+
+	<div class="min-w-0 flex-1 py-10">
+		{@render children?.()}
+	</div>
+</div>
