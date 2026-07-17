@@ -3,6 +3,7 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { ModeWatcher } from 'mode-watcher';
+	import '$lib/icons';
 	import { locales, localizeHref } from '$lib/paraglide/runtime';
 	import SiteHeader from '$lib/components/site-header.svelte';
 	import './layout.css';
