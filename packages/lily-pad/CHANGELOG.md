@@ -1,5 +1,11 @@
 # @levish0/lily-pad
 
+## 0.3.1
+
+### Patch Changes
+
+- [`f755b04`](https://github.com/levish0/lily-pad/commit/f755b044c1e20dc1c97744350c26e7eb3498ffd6) Thanks [@levish0](https://github.com/levish0)! - Fix a hydration mismatch on the theme toggle: both sun/moon icons now render and CSS (`dark:` variant) picks the visible one, so server and client markup always match regardless of the visitor's persisted mode.
+
 ## 0.3.0
 
 ### Minor Changes
