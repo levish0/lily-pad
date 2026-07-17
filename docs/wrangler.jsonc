@@ -2,6 +2,6 @@
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "docs",
 	"compatibility_date": "2026-07-17",
-	"compatibility_flags": ["nodejs_als"],
+	"compatibility_flags": ["nodejs_compat"],
 	"pages_build_output_dir": ".svelte-kit/cloudflare"
 }
