@@ -59,7 +59,8 @@ export default defineConfig({
 			preprocess: [containerSyntax(), mdsx(mdsxConfig)],
 			extensions: ['.svelte', '.md'],
 			alias: {
-				'$content/*': '.velite/*'
+				'$content/*': '.velite/*',
+				$config: 'lily-pad.config.ts'
 			}
 		}),
 
