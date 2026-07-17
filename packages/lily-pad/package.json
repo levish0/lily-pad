@@ -37,7 +37,8 @@
 			"types": "./dist/velite.d.ts",
 			"default": "./dist/velite.js"
 		},
-		"./styles.css": "./dist/styles.css"
+		"./styles.css": "./dist/styles.css",
+		"./package.json": "./package.json"
 	},
 	"files": [
 		"dist"
