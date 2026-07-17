@@ -9,6 +9,8 @@ const langs = [
 	() => import('@shikijs/langs/html'),
 	() => import('@shikijs/langs/css'),
 	() => import('@shikijs/langs/json'),
+	() => import('@shikijs/langs/yaml'),
+	() => import('@shikijs/langs/markdown'),
 	() => import('@shikijs/langs/bash')
 ];
 
