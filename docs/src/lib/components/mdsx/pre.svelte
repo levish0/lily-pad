@@ -1,31 +1,20 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import CopyButton from '$lib/components/copy-button.svelte';
+	import { CodeBlock } from '$lib/components/ui/code-block/index.js';
 	import { cn } from '$lib/utils.js';
-	import type { HTMLAttributes } from 'svelte/elements';
 
-	let { class: className, children, ...restProps }: HTMLAttributes<HTMLPreElement> = $props();
+	let {
+		class: className,
+		'data-code': encodedCode,
+		'data-lang': lang
+	}: {
+		class?: string;
+		'data-code'?: string;
+		'data-lang'?: string;
+	} = $props();
 
-	let preNode = $state<HTMLPreElement>();
-	let code = $state('');
-
-	onMount(() => {
-		if (preNode) {
-			code = preNode.innerText.trim();
-		}
-	});
+	// `rehypeCodeBlock` URI-encodes the source so braces and quotes survive
+	// the trip through an attribute in the compiled markup.
+	const code = $derived(encodedCode ? decodeURIComponent(encodedCode) : '');
 </script>
 
-<div class="code-block relative my-5 overflow-hidden rounded-3xl bg-(--text)/5">
-	<!--
-	We cannot have a newline between the pre and children or we will get a newline in the code block
-	-->
-	<pre
-		bind:this={preNode}
-		class={cn(
-			'no-scrollbar min-w-0 overflow-x-auto px-5 py-4 pe-14 text-sm leading-[1.7] outline-none',
-			className
-		)}
-		{...restProps}>{@render children?.()}</pre>
-	<CopyButton text={code} />
-</div>
+<CodeBlock {code} {lang} class={cn('my-5', className)} />
