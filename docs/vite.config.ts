@@ -55,7 +55,13 @@ export default defineConfig({
 					return true;
 				}
 			},
-			adapter: adapter(),
+			adapter: adapter({
+				routes: {
+					// The pagefind index is written into the output dir after the
+					// adapter runs — serve it as static assets, not through the worker.
+					exclude: ['<all>', '/pagefind/*']
+				}
+			}),
 			preprocess: [containerSyntax(), mdsx(mdsxConfig)],
 			extensions: ['.svelte', '.md'],
 			alias: {
