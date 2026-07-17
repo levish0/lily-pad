@@ -14,14 +14,16 @@
 	const locale = $derived(lp.localeOf(page.url));
 
 	function spanClass(feature: HomeFeature): string {
-		return feature.span === 2 ? 'sm:col-span-2' : '';
+		// min-w-0: grid items default to min-width auto, so an unbreakable line
+		// (e.g. a code card) would widen the column past the viewport on mobile.
+		return feature.span === 2 ? 'min-w-0 sm:col-span-2' : 'min-w-0';
 	}
 </script>
 
 {#snippet cardBody(feature: HomeFeature)}
 	<Card.Root
 		class={cn(
-			'h-full gap-3 p-6 transition-colors duration-150',
+			'h-full min-w-0 gap-3 p-6 transition-colors duration-150',
 			feature.href && 'hover:bg-(--text)/5'
 		)}
 	>
