@@ -1,5 +1,11 @@
 # @levish0/lily-pad
 
+## 0.2.0
+
+### Minor Changes
+
+- [`814b3ac`](https://github.com/levish0/lily-pad/commit/814b3ac6e4e27e9068839b5a8834390986f327f3) Thanks [@levish0](https://github.com/levish0)! - import(url) fix
+
 ## 0.1.0
 
 ### Minor Changes
