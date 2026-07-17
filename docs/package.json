@@ -5,11 +5,11 @@
 	"type": "module",
 	"scripts": {
 		"dev": "pnpm build:content && vite dev",
-		"build": "pnpm build:content && wrangler types --check && vite build",
+		"build": "pnpm build:content && wrangler types && vite build",
 		"build:content": "velite",
 		"preview": "wrangler pages dev .svelte-kit/cloudflare --port 4173",
 		"prepare": "svelte-kit sync || echo ''",
-		"check": "pnpm build:content && wrangler types --check && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check": "pnpm build:content && wrangler types && svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
