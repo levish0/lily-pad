@@ -5,6 +5,7 @@ export { default as DocPage } from './components/doc-page.svelte';
 export { default as HomePage } from './components/home-page.svelte';
 export { default as HomeHero } from './components/home-hero.svelte';
 export { default as FeatureGrid } from './components/feature-grid.svelte';
+export { default as SiteFooter } from './components/site-footer.svelte';
 
 // Site configuration.
 export { defineSiteConfig, localized } from './config.js';

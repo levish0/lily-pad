@@ -29,6 +29,14 @@ export interface HomeConfig {
 	features?: HomeFeature[];
 }
 
+export interface FooterConfig {
+	/** Left-side sentence. HTML is allowed (it's your own config) — e.g.
+	 *  `Built by <a href="…" class="link">you</a>.` */
+	message?: LocalizedText;
+	/** Right-side short note. */
+	note?: LocalizedText;
+}
+
 export interface SiteConfig {
 	/** Site name — browser tab suffix and header identity. */
 	title: string;
@@ -42,6 +50,8 @@ export interface SiteConfig {
 	rootSection: LocalizedText;
 	/** Home page hero and feature grid. */
 	home?: HomeConfig;
+	/** Site footer; omit to render no footer. */
+	footer?: FooterConfig;
 	/** Overrides for the theme's built-in UI strings (search placeholder, prev/next…). */
 	strings?: Partial<Record<ThemeStringKey, LocalizedText>>;
 }
