@@ -23,15 +23,15 @@ Regular paragraphs with **bold**, _italic_, and `inline code`. Links can be [int
 
 Fenced code blocks are highlighted with shiki, using dual light/dark themes:
 
-```ts title="src/lib/hello.ts"
+```ts
 export function greet(name: string) {
 	return `Hello, ${name}!`;
 }
 ```
 
-Highlight specific lines with `{n}` meta:
+Svelte works too — see [Code Blocks](/docs/writing/code-blocks) for the full list of languages:
 
-```svelte {2}
+```svelte
 <script>
 	let count = $state(0);
 </script>

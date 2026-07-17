@@ -24,15 +24,15 @@ order: 1
 
 펜스 코드 블록은 shiki로 하이라이팅되며, 라이트/다크 듀얼 테마를 사용합니다:
 
-```ts title="src/lib/hello.ts"
+```ts
 export function greet(name: string) {
 	return `안녕하세요, ${name}님!`;
 }
 ```
 
-`{n}` 메타로 특정 줄을 강조할 수 있습니다:
+Svelte도 됩니다 — 지원 언어 전체는 [코드 블록](/docs/writing/code-blocks)을 보세요:
 
-```svelte {2}
+```svelte
 <script>
 	let count = $state(0);
 </script>
