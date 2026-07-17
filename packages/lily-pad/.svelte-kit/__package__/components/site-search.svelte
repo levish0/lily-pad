@@ -39,8 +39,11 @@
 	async function loadPagefind() {
 		if (pagefind !== undefined) return;
 		try {
-			// Kept opaque to the bundler — the index only exists in build output.
-			const url = '/pagefind/pagefind.js';
+			// The index only exists in build output. The specifier must be a
+			// runtime value — a literal (even behind a const) gets inlined when
+			// consumers prebundle this package, and vite's import analysis then
+			// fails on the missing file in dev.
+			const url = `${location.origin}/pagefind/pagefind.js`;
 			pagefind = (await import(/* @vite-ignore */ url)) as PagefindModule;
 		} catch {
 			pagefind = null;
