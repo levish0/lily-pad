@@ -160,11 +160,12 @@
 							{/if}
 						</span>
 						{#if item.excerpt}
-							<!-- eslint-disable-next-line svelte/no-at-html-tags -- pagefind excerpts are built from our own prerendered pages -->
+							<!-- eslint-disable svelte/no-at-html-tags -- pagefind excerpts are built from our own prerendered pages -->
 							<span
 								class="line-clamp-2 text-xs leading-[1.6] text-(--text)/56 [&_mark]:bg-transparent [&_mark]:font-semibold [&_mark]:text-(--text)"
 								>{@html item.excerpt}</span
 							>
+							<!-- eslint-enable svelte/no-at-html-tags -->
 						{/if}
 					</button>
 				{/each}

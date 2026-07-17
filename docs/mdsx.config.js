@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment -- plugin option shapes vary too much for checkJs */
 // @ts-nocheck
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';

@@ -34,8 +34,14 @@ export default defineConfig(
 		}
 	},
 	{
-		// Override or add rule settings here, such as:
-		// 'svelte/button-has-type': 'error'
-		rules: {}
+		rules: {
+			// Docs URLs are content-driven and locale-prefixed at runtime via
+			// localizeHref() — resolve() has nothing to add (no base path).
+			'svelte/no-navigation-without-resolve': 'off'
+		}
+	},
+	{
+		// Generated files: wrangler types / paraglide compiler output.
+		ignores: ['worker-configuration.d.ts', 'src/lib/paraglide/']
 	}
 );

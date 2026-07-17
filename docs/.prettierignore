@@ -9,3 +9,7 @@ bun.lockb
 /static/
 .velite/
 content/
+# Generated
+src/lib/paraglide/
+worker-configuration.d.ts
+project.inlang/
