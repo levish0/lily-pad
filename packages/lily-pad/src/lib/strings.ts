@@ -4,7 +4,8 @@ const DEFAULTS: Record<ThemeStringKey, LocalizedText> = {
 	searchPlaceholder: { en: 'Search documentation…', ko: '문서 검색…' },
 	searchNoResults: { en: 'No results found.', ko: '결과가 없습니다.' },
 	prevPage: { en: 'Previous', ko: '이전 글' },
-	nextPage: { en: 'Next', ko: '다음 글' }
+	nextPage: { en: 'Next', ko: '다음 글' },
+	getStarted: { en: 'Get started', ko: '시작하기' }
 };
 
 export function themeString(

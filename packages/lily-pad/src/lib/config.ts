@@ -6,6 +6,29 @@ export interface NavEntry {
 	href: string;
 }
 
+/** One card in the home page's bento grid. */
+export interface HomeFeature {
+	/** Iconify icon name, e.g. `heroicons:language-solid`. */
+	icon?: string;
+	title: LocalizedText;
+	description?: LocalizedText;
+	/** Canonical link (`/docs/...`) — localized for the reader at render time. */
+	href?: string;
+	/** Grid columns to span (default 1). */
+	span?: 1 | 2;
+	/** Render this code snippet in the card instead of a description. */
+	code?: string;
+	/** Language for `code` (default `bash`). */
+	lang?: string;
+}
+
+export interface HomeConfig {
+	/** Big hero line (defaults to the site title). */
+	headline?: LocalizedText;
+	/** Bento grid cards under the hero; omit for a hero-only home. */
+	features?: HomeFeature[];
+}
+
 export interface SiteConfig {
 	/** Site name — browser tab suffix and header identity. */
 	title: string;
@@ -17,11 +40,14 @@ export interface SiteConfig {
 	nav: NavEntry[];
 	/** Sidebar title for pages at each locale's content root. */
 	rootSection: LocalizedText;
+	/** Home page hero and feature grid. */
+	home?: HomeConfig;
 	/** Overrides for the theme's built-in UI strings (search placeholder, prev/next…). */
 	strings?: Partial<Record<ThemeStringKey, LocalizedText>>;
 }
 
-export type ThemeStringKey = 'searchPlaceholder' | 'searchNoResults' | 'prevPage' | 'nextPage';
+export type ThemeStringKey =
+	'searchPlaceholder' | 'searchNoResults' | 'prevPage' | 'nextPage' | 'getStarted';
 
 /** Identity helper so user configs get type checking and completion. */
 export function defineSiteConfig(config: SiteConfig): SiteConfig {
