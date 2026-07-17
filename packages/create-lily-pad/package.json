@@ -34,7 +34,8 @@
 		"build": "node -e \"\"",
 		"check": "node --check bin.js",
 		"lint": "prettier --check bin.js",
-		"format": "prettier --write bin.js"
+		"format": "prettier --write bin.js",
+		"prepublishOnly": "node sync-template.mjs"
 	},
 	"engines": {
 		"node": ">=20"
