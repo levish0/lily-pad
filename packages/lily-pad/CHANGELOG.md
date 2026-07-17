@@ -1,5 +1,11 @@
 # @levish0/lily-pad
 
+## 0.3.2
+
+### Patch Changes
+
+- [`9767065`](https://github.com/levish0/lily-pad/commit/976706549a9df8365e75d534ae658255ce020d8a) Thanks [@levish0](https://github.com/levish0)! - Fix mobile overflow on the home feature grid: grid items get `min-w-0` so an unbreakable line (e.g. the code card) no longer widens the column past the viewport — long code scrolls inside its card instead.
+
 ## 0.3.1
 
 ### Patch Changes
