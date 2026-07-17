@@ -6,6 +6,7 @@
 	import { findNeighbors } from '$lib/nav.js';
 	import { deLocalizeHref, localizeHref } from '$lib/paraglide/runtime';
 	import { localeOfUrl } from '$lib/locale.js';
+	import { site } from '$lib/site.js';
 	import * as m from '$lib/paraglide/messages';
 
 	let { data } = $props();
@@ -19,7 +20,7 @@
 </script>
 
 <svelte:head>
-	<title>{doc.title} — lily-pad</title>
+	<title>{doc.title} — {site.title}</title>
 	<meta name="description" content={doc.description} />
 </svelte:head>
 

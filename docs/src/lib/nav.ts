@@ -1,5 +1,6 @@
 import { docs } from '$content/index.js';
 import { baseLocale, locales } from '$lib/paraglide/runtime';
+import { localized, site } from '$lib/site.js';
 
 export interface NavItem {
 	title: string;
@@ -10,11 +11,6 @@ export interface NavSection {
 	title: string;
 	items: NavItem[];
 }
-
-const ROOT_SECTION: Record<string, string> = {
-	en: 'Getting Started',
-	ko: '시작하기'
-};
 
 function titleCase(segment: string): string {
 	return segment
@@ -80,7 +76,8 @@ function buildNav(locale: string): NavSection[] {
 			return a.minOrder - b.minOrder;
 		})
 		.map(([key, section]) => ({
-			title: section.title ?? (key === '' ? (ROOT_SECTION[locale] ?? 'Docs') : titleCase(key)),
+			title:
+				section.title ?? (key === '' ? localized(site.rootSection, locale) : titleCase(key)),
 			items: section.items
 		}));
 }

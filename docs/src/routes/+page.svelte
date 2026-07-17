@@ -3,16 +3,14 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import { localeOfUrl } from '$lib/locale.js';
+	import { site } from '$lib/site.js';
 
 	const locale = $derived(localeOfUrl(page.url));
 </script>
 
 <svelte:head>
-	<title>lily-pad — calm documentation sites</title>
-	<meta
-		name="description"
-		content="A calm, minimal documentation generator built on SvelteKit and lily-svelte."
-	/>
+	<title>{site.title} — calm documentation sites</title>
+	<meta name="description" content={site.description} />
 </svelte:head>
 
 <main class="flex flex-1 flex-col items-center justify-center gap-6 px-6 py-24 text-center">

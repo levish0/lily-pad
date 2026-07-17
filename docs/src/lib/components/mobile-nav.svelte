@@ -5,11 +5,7 @@
 	import { getDocsNav } from '$lib/nav.js';
 	import { localeOfUrl } from '$lib/locale.js';
 	import { deLocalizeHref, localizeHref } from '$lib/paraglide/runtime';
-
-	const mainNav = [
-		{ title: 'Home', href: '/' },
-		{ title: 'Docs', href: '/docs' }
-	];
+	import { localized, site } from '$lib/site.js';
 
 	let open = $state(false);
 
@@ -65,7 +61,7 @@
 	>
 		<nav class="mx-auto flex max-w-6xl flex-col gap-6">
 			<div class="flex flex-col gap-1">
-				{#each mainNav as item (item.href)}
+				{#each site.nav as item (item.href)}
 					<a
 						href={localizeHref(item.href, { locale })}
 						class="rounded-xl px-3 py-2 text-sm tracking-[-0.39px] transition-colors duration-150
@@ -73,7 +69,7 @@
 							? 'bg-(--text)/8 font-medium text-(--text)'
 							: 'text-(--text)/56 hover:bg-(--text)/5 hover:text-(--text)'}"
 					>
-						{item.title}
+						{localized(item.label, locale)}
 					</a>
 				{/each}
 			</div>
