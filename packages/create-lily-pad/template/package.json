@@ -3,6 +3,7 @@
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
+	"packageManager": "pnpm@11.5.0",
 	"scripts": {
 		"dev": "pnpm build:content && vite dev",
 		"build": "pnpm build:content && wrangler types && vite build && pagefind --site .svelte-kit/cloudflare",
