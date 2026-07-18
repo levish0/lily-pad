@@ -1,5 +1,11 @@
 # @levish0/create-lily-pad
 
+## 0.3.1
+
+### Patch Changes
+
+- [`548e5eb`](https://github.com/levish0/lily-pad/commit/548e5eb86685abaf242b9c7113b3c70a227ad85e) Thanks [@levish0](https://github.com/levish0)! - Pin pnpm 11 via `packageManager` in the scaffolded project. Cloudflare Pages defaults to pnpm 10, which doesn't understand the template's `allowBuilds` setting (pnpm 11 syntax), so build scripts were silently skipped and lockfiles written locally with pnpm 11 could mismatch on deploy.
+
 ## 0.3.0
 
 ### Minor Changes
