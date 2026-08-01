@@ -1,5 +1,11 @@
 # @levish0/lily-pad
 
+## 0.3.3
+
+### Patch Changes
+
+- [`4191be9`](https://github.com/levish0/lily-pad/commit/4191be9a085f76b05e8bae1d0bd14eacab20d61f) Thanks [@levish0](https://github.com/levish0)! - Update the author URL to the new Workers deployment. The old `levish-ac.pages.dev` origin has been removed, so the link on npm no longer resolves.
+
 ## 0.3.2
 
 ### Patch Changes
