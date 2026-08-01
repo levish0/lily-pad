@@ -1,5 +1,5 @@
 {
-	"$schema": "https://lily-svelte.pages.dev/schema.json",
+	"$schema": "https://lily-svelte.levish.workers.dev/schema.json",
 	"tailwind": {
 		"css": "src\\routes\\layout.css",
 		"baseColor": "neutral"
@@ -12,7 +12,7 @@
 		"lib": "$lib"
 	},
 	"typescript": true,
-	"registry": "https://lily-svelte.pages.dev/registry",
+	"registry": "https://lily-svelte.levish.workers.dev/registry",
 	"iconLibrary": "lucide",
 	"menuColor": "default",
 	"menuAccent": "subtle"

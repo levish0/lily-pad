@@ -5,7 +5,7 @@ navLabel: lily-pad란?
 order: 1
 ---
 
-lily-pad는 마크다운 폴더를 차분하고 둥근 문서 사이트로 바꿔줍니다. [VitePress](https://vitepress.dev)와 같은 아이디어 — 마크다운을 넣으면 정적 사이트가 나오는 — 지만, **SvelteKit** 위에서 **[lily-svelte](https://lily-svelte.pages.dev)**로 스타일링되어 문서가 컴포넌트와 같은 디자인 언어를 공유합니다.
+lily-pad는 마크다운 폴더를 차분하고 둥근 문서 사이트로 바꿔줍니다. [VitePress](https://vitepress.dev)와 같은 아이디어 — 마크다운을 넣으면 정적 사이트가 나오는 — 지만, **SvelteKit** 위에서 **[lily-svelte](https://lily-svelte.levish.workers.dev)**로 스타일링되어 문서가 컴포넌트와 같은 디자인 언어를 공유합니다.
 
 > 이 사이트 자체가 lily-pad로 만들어졌습니다 — 지금 읽고 있는 모든 페이지가 `content/` 안의 마크다운 파일입니다.
 
@@ -24,4 +24,4 @@ lily-pad는 마크다운 폴더를 차분하고 둥근 문서 사이트로 바�
 
 ## lily-svelte와의 관계
 
-[lily-svelte](https://lily-svelte.pages.dev)가 컴포넌트 라이브러리라면, lily-pad는 그것으로 만든 문서 생성기입니다. 여기 보이는 모든 UI — 사이드바, 표, 다이얼로그, 드롭다운 — 는 `lily-svelte` CLI로 설치한 lily 컴포넌트입니다.
+[lily-svelte](https://lily-svelte.levish.workers.dev)가 컴포넌트 라이브러리라면, lily-pad는 그것으로 만든 문서 생성기입니다. 여기 보이는 모든 UI — 사이드바, 표, 다이얼로그, 드롭다운 — 는 `lily-svelte` CLI로 설치한 lily 컴포넌트입니다.

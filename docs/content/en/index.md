@@ -5,7 +5,7 @@ navLabel: What is lily-pad?
 order: 1
 ---
 
-lily-pad turns a folder of markdown files into a calm, rounded documentation site. It is the same idea as [VitePress](https://vitepress.dev) — markdown in, static site out — but built on **SvelteKit** and styled with **[lily-svelte](https://lily-svelte.pages.dev)**, so your docs share the design language of your components.
+lily-pad turns a folder of markdown files into a calm, rounded documentation site. It is the same idea as [VitePress](https://vitepress.dev) — markdown in, static site out — but built on **SvelteKit** and styled with **[lily-svelte](https://lily-svelte.levish.workers.dev)**, so your docs share the design language of your components.
 
 > This site is built with lily-pad itself — every page you're reading is a markdown file in `content/`.
 
@@ -24,4 +24,4 @@ lily-pad turns a folder of markdown files into a calm, rounded documentation sit
 
 ## What about lily-svelte?
 
-[lily-svelte](https://lily-svelte.pages.dev) is the component library; lily-pad is the documentation generator built with it. Every piece of UI you see here — the sidebar, tables, dialogs, dropdowns — is a lily component installed through the `lily-svelte` CLI.
+[lily-svelte](https://lily-svelte.levish.workers.dev) is the component library; lily-pad is the documentation generator built with it. Every piece of UI you see here — the sidebar, tables, dialogs, dropdowns — is a lily component installed through the `lily-svelte` CLI.

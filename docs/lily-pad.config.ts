@@ -11,7 +11,7 @@ export const site = defineSiteConfig({
 	rootSection: { en: 'Introduction', ko: '소개' },
 	footer: {
 		message: {
-			en: 'Built by <a href="https://levish-ac.pages.dev" class="link">levish</a>. The source code is available on <a href="https://github.com/levish0/lily-pad" class="link">GitHub</a>.'
+			en: 'Built by <a href="https://levish-ac.levish.workers.dev" class="link">levish</a>. The source code is available on <a href="https://github.com/levish0/lily-pad" class="link">GitHub</a>.'
 		},
 		note: { en: 'Quiet by design.' }
 	},
