@@ -7,8 +7,9 @@
  * content scanner at them so their utility classes are generated. */
 @source '../../node_modules/@levish0/lily-pad/dist';
 
-/* lily design system — written into your stylesheet by the lily CLI; yours to edit. */
-
+/* lily design system v0.5.0 — managed by the lily CLI; yours to edit.
+   Edit freely: `lily update` leaves an edited region alone and shows you what changed.
+   0346a020fb42905d83dad7b1627ec426e8768713bcdf84256f8de14ec180e820 */
 @custom-variant dark (&:is(.dark *));
 
 /* Motion: a gentle spring easing used as the default transition timing.
@@ -42,7 +43,11 @@
 	}
 
 	:root {
-		--bg: #f8f8f8;
+		/* The step between these two is load-bearing: lily separates cards, dialogs and
+		 * popovers from the page with colour alone, no borders. #f0f0f0 -> #ffffff is 5.2 L*,
+		 * matching the dark pair, so the same design reads the same in both modes. Equal
+		 * values make every elevated surface invisible. */
+		--bg: #f0f0f0;
 		--bg-elevated: #ffffff;
 		--text: #0d0d0d;
 
@@ -273,3 +278,4 @@
 		display: none;
 	}
 }
+/* end lily design system */

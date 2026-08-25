@@ -9,6 +9,7 @@ const langs = [
 	() => import('@shikijs/langs/html'),
 	() => import('@shikijs/langs/css'),
 	() => import('@shikijs/langs/json'),
+	// lily-pad renders documentation, so front matter and nested markdown samples matter here
 	() => import('@shikijs/langs/yaml'),
 	() => import('@shikijs/langs/markdown'),
 	() => import('@shikijs/langs/bash')

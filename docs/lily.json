@@ -1,7 +1,7 @@
 {
 	"$schema": "https://lily-svelte.levish.workers.dev/schema.json",
 	"tailwind": {
-		"css": "src\\routes\\layout.css",
+		"css": "src/routes/layout.css",
 		"baseColor": "neutral"
 	},
 	"aliases": {
