@@ -1,5 +1,11 @@
 # @levish0/lily-pad
 
+## 0.4.1
+
+### Patch Changes
+
+- [#31](https://github.com/levish0/lily-pad/pull/31) [`d0f301f`](https://github.com/levish0/lily-pad/commit/d0f301fcd7c31849762360e44bfc4ae5bf204279) Thanks [@levish0](https://github.com/levish0)! - Sync the table of contents with lily-svelte so active-item emphasis scales the label instead of animating the link's font size and padding, reducing layout shifts while scrolling.
+
 ## 0.4.0
 
 ### Minor Changes
