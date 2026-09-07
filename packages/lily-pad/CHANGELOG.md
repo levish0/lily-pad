@@ -1,5 +1,11 @@
 # @levish0/lily-pad
 
+## 0.4.2
+
+### Patch Changes
+
+- [#35](https://github.com/levish0/lily-pad/pull/35) [`d7cf1d5`](https://github.com/levish0/lily-pad/commit/d7cf1d55707c29989eca9df68f8517b3df971668) Thanks [@levish0](https://github.com/levish0)! - Keep the document language and Pagefind index in sync after client-side locale changes. Wait for initial search loading and discard stale results when the query or locale changes or the search dialog closes.
+
 ## 0.4.1
 
 ### Patch Changes
