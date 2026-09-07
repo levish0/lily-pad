@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import { tick } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/state';
 	import { Dialog, DialogContent } from '$lib/components/ui/dialog/index.js';
@@ -7,6 +8,8 @@
 	import { getLilyPad } from '$lib/context.js';
 
 	interface PagefindModule {
+		init: () => Promise<void> | void;
+		destroy: () => Promise<void> | void;
 		search: (query: string) => Promise<{
 			results: { id: string; data: () => Promise<PagefindDocument> }[];
 		}>;
@@ -30,45 +33,66 @@
 	const lp = getLilyPad();
 	const locale = $derived(lp.localeOf(page.url));
 
-	// Full-text search over the built site. The index only exists in
-	// production output, so in dev this stays null and we fall back to
-	// filtering sidebar titles.
-	let pagefind: PagefindModule | null | undefined;
+	// The index only exists in production output. Share the import promise
+	// so queries typed while it loads still run; dev falls back to nav titles.
+	let pagefindModule: Promise<PagefindModule | null> | undefined;
+	let pagefindReady: Promise<void> = Promise.resolve();
+	let pagefindLocale: string | undefined;
 	let fullTextResults = $state<Result[] | undefined>();
 
-	async function loadPagefind() {
-		if (pagefind !== undefined) return;
-		try {
-			// The index only exists in build output. The specifier must be a
-			// runtime value — a literal (even behind a const) gets inlined when
-			// consumers prebundle this package, and vite's import analysis then
-			// fails on the missing file in dev.
+	async function loadPagefind(searchLocale: string): Promise<PagefindModule | null> {
+		if (!pagefindModule) {
+			// Keep the specifier a runtime value: consumers may prebundle this
+			// package before the generated index exists.
 			const url = `${location.origin}/pagefind/pagefind.js`;
-			pagefind = (await import(/* @vite-ignore */ url)) as PagefindModule;
-		} catch {
-			pagefind = null;
+			pagefindModule = import(/* @vite-ignore */ url)
+				.then((module) => module as PagefindModule)
+				.catch(() => null);
 		}
+		const pagefind = await pagefindModule;
+		if (!pagefind) return null;
+
+		// Pagefind caches its language internally. Serialize resets so rapid
+		// locale changes cannot initialize over another pending reset.
+		const ready = pagefindReady.then(async () => {
+			if (searchLocale !== locale || pagefindLocale === searchLocale) return;
+			await pagefind.destroy();
+			pagefindLocale = undefined;
+			// Let AppShell update <html lang> before Pagefind reads it.
+			await tick();
+			if (searchLocale !== locale) return;
+			await pagefind.init();
+			pagefindLocale = searchLocale;
+		});
+		// A failed initialization must not poison subsequent attempts.
+		pagefindReady = ready.catch(() => {
+			pagefindLocale = undefined;
+		});
+		await ready;
+		return searchLocale === locale && pagefindLocale === searchLocale ? pagefind : null;
 	}
 
 	function cleanUrl(url: string): string {
 		return url.replace(/\/index\.html$/, '/').replace(/\.html$/, '') || '/';
 	}
 
-	let searchToken = 0;
-	async function runSearch(q: string) {
-		if (!pagefind || !q.trim()) {
-			fullTextResults = undefined;
-			return;
+	async function runSearch(query: string, searchLocale: string, isCancelled: () => boolean) {
+		try {
+			const pagefind = await loadPagefind(searchLocale);
+			if (!pagefind || !query || isCancelled()) return;
+			const { results } = await pagefind.search(query);
+			if (isCancelled()) return;
+			const docs = await Promise.all(results.slice(0, 10).map((r) => r.data()));
+			if (isCancelled()) return;
+			fullTextResults = docs.map((doc) => ({
+				title: doc.meta.title ?? doc.url,
+				href: cleanUrl(doc.url),
+				excerpt: doc.excerpt
+			}));
+		} catch {
+			// Missing or failed index assets should leave title search usable.
+			if (!isCancelled()) fullTextResults = undefined;
 		}
-		const token = ++searchToken;
-		const { results } = await pagefind.search(q.trim());
-		const docs = await Promise.all(results.slice(0, 10).map((r) => r.data()));
-		if (token !== searchToken) return;
-		fullTextResults = docs.map((doc) => ({
-			title: doc.meta.title ?? doc.url,
-			href: cleanUrl(doc.url),
-			excerpt: doc.excerpt
-		}));
 	}
 
 	const navItems: Result[] = $derived(
@@ -101,17 +125,27 @@
 	}
 
 	$effect(() => {
-		runSearch(query);
+		if (open) {
+			query = '';
+			// Focus the input once the dialog mounts.
+			const timeout = setTimeout(() => inputEl?.focus(), 0);
+			return () => clearTimeout(timeout);
+		}
 	});
 
 	$effect(() => {
-		if (open) {
-			query = '';
-			fullTextResults = undefined;
-			loadPagefind();
-			// focus the input once the dialog mounts
-			setTimeout(() => inputEl?.focus(), 0);
-		}
+		const searchLocale = locale;
+		const searchQuery = query.trim();
+		fullTextResults = undefined;
+		if (!open) return;
+
+		let cancelled = false;
+		void runSearch(searchQuery, searchLocale, () => cancelled);
+		// Invalidate pending searches on query/locale changes, closing, and
+		// unmounting — even when the new query is empty.
+		return () => {
+			cancelled = true;
+		};
 	});
 </script>
 
