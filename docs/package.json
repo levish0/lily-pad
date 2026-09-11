@@ -21,7 +21,7 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@inlang/paraglide-js": "^2.24.1",
+		"@inlang/paraglide-js": "^2.25.1",
 		"@levish0/lily-pad": "workspace:*",
 		"@playwright/test": "^1.62.1",
 		"@sveltejs/adapter-cloudflare": "^7.2.9",
