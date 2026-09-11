@@ -48,7 +48,7 @@ jobs:
       - name: Create Release Pull Request or Publish
         # Action v2 requires Changesets CLI v3 and renamed inputs.
         # Keep v1 while the workspace uses @changesets/cli v2.
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
           commit: 'chore(release): version packages'
           title: 'chore(release): version packages'
